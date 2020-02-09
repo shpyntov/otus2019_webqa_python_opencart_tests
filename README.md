@@ -1,3 +1,3 @@
-# otus2019_webqa_python_selenium_basics
+# Основы Selenium
 
-Основы Selenium
+Передача URL и браузера через параметры запуска
