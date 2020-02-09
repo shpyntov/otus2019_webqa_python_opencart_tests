@@ -1,1 +1,3 @@
 # otus2019_webqa_python_selenium_basics
+
+Основы Selenium
