@@ -14,11 +14,11 @@ def browser(request):
         wd = webdriver.Ie()
     elif cl_browser == 'firefox':
         options = webdriver.FirefoxOptions()
-        # options.headless = True
+        options.headless = True
         wd = webdriver.Firefox(options=options)
     else:
         options = webdriver.ChromeOptions()
-        # options.add_argument('headless')
+        options.add_argument('headless')
         wd = webdriver.Chrome(options=options)
 
     request.addfinalizer(wd.quit)
