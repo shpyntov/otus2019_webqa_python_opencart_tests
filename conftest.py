@@ -7,12 +7,14 @@ def pytest_addoption(parser):
     parser.addoption('--browser', action='store', help='browser for tests', choices=['chrome', 'firefox', 'ie'], default='chrome')
     parser.addoption('--platform', action='store', help='platform for tests', choices=['windows', 'linux'], default='windows')
     parser.addoption('--executor', action='store', help='executor for tests', choices=['local', 'grid', 'cloud'], default='local')
+    parser.addoption('--wait', action='store', help='wait', default=10)
 
 
 @pytest.fixture
 def browser(request):
     cl_browser = request.config.getoption('--browser')
     cl_executor = request.config.getoption('--executor')
+    cl_wait = request.config.getoption('--wait')
     if cl_executor == 'grid':
         cl_platform = request.config.getoption('--platform')
         wd = webdriver.Remote(command_executor='http://192.168.241.1:4444/wd/hub',
@@ -41,6 +43,8 @@ def browser(request):
             options = webdriver.ChromeOptions()
             options.add_argument('headless')
             wd = webdriver.Chrome(options=options)
+    wd.wait = cl_wait
+    # wd.implicitly_wait(wd.wait)
     request.addfinalizer(wd.quit)
     return wd
 
