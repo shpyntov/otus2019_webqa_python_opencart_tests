@@ -2,6 +2,7 @@ class AdminPage:
     CATALOG_MENU_BUTTON = '#menu-catalog > a'
     PRODUCTS_MENU_BUTTON = '#collapse1 > li:nth-child(2)'
     ADD_NEW_PRODUCT = '.page-header .pull-right .btn-primary'
+    REMOVE_NEW_PRODUCT = '.page-header .pull-right .btn-danger'
     NEW_PRODUCT_NAME = '#input-name1'
     NEW_PRODUCT_META = '#input-meta-title1'
     NEW_PRODUCT_MODEL = '#input-model'
@@ -9,3 +10,4 @@ class AdminPage:
     SAVE_NEW_PRODUCT = '.pull-right > .btn:nth-child(1)'
     PRODUCT_ROWS_IN_TABLE = 'tbody tr'
     PRODUCT_NAMES_IN_TABLE = PRODUCT_ROWS_IN_TABLE + ' td:nth-child(3)'
+    PRODUCT_CHECKBOX_IN_TABLE = PRODUCT_ROWS_IN_TABLE + ' td:nth-child(1)'

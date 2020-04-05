@@ -45,7 +45,7 @@ def browser(request):
             # options.add_argument('headless')
             wd = webdriver.Chrome(options=options)
     wd.wait = cl_wait
-    wd.implicitly_wait(wd.wait)
+    # wd.implicitly_wait(wd.wait)
     request.addfinalizer(wd.quit)
     return wd
 
