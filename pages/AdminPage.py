@@ -10,4 +10,4 @@ class AdminPage:
     SAVE_NEW_PRODUCT = '.pull-right > .btn:nth-child(1)'
     PRODUCT_ROWS_IN_TABLE = 'tbody tr'
     PRODUCT_NAMES_IN_TABLE = PRODUCT_ROWS_IN_TABLE + ' td:nth-child(3)'
-    PRODUCT_CHECKBOX_IN_TABLE = PRODUCT_ROWS_IN_TABLE + ' td:nth-child(1)'
+    PRODUCT_CHECKBOXES_IN_TABLE = PRODUCT_ROWS_IN_TABLE + ' td:nth-child(1)'

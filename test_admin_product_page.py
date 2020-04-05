@@ -54,7 +54,7 @@ def test_remove_new_product(browser, base_url):
     products = browser.find_elements_by_css_selector(AdminPage.PRODUCT_ROWS_IN_TABLE)
     removed_product = products.pop(randint(0, len(products)-1))
     removed_product_name = removed_product.find_element_by_css_selector(AdminPage.PRODUCT_NAMES_IN_TABLE).text
-    removed_product.find_element_by_css_selector(AdminPage.PRODUCT_CHECKBOX_IN_TABLE).click()
+    removed_product.find_element_by_css_selector(AdminPage.PRODUCT_CHECKBOXES_IN_TABLE).click()
     browser.find_element_by_css_selector(AdminPage.REMOVE_NEW_PRODUCT).click()
     try:
         wait.until(EC.alert_is_present())
@@ -63,7 +63,7 @@ def test_remove_new_product(browser, base_url):
     except EXC.TimeoutException:
         print("no alert")
     finally:
-        # check that the new product not in the table
+        # check that the product not in the table
         while True:
             products = browser.find_elements_by_css_selector(AdminPage.PRODUCT_NAMES_IN_TABLE)
             for product in products:
