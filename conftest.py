@@ -42,7 +42,7 @@ def browser(request):
             wd = webdriver.Firefox(options=options)
         elif cl_browser == 'chrome':
             options = webdriver.ChromeOptions()
-            options.add_argument('headless')
+            # options.add_argument('headless')
             wd = webdriver.Chrome(options=options)
     wd.wait = cl_wait
     wd.implicitly_wait(wd.wait)
