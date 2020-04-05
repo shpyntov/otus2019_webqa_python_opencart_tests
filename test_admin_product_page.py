@@ -27,7 +27,7 @@ def test_add_new_product(browser, base_url, random_product_name):
     browser.find_element_by_css_selector(AdminPage.SAVE_NEW_PRODUCT).click()
     # check that the new product in the table
     while True:
-        products = browser.find_elements_by_css_selector(AdminPage.PRODUCT_NAME_IN_TABLE)
+        products = browser.find_elements_by_css_selector(AdminPage.PRODUCT_NAMES_IN_TABLE)
         for product in products:
             if random_product_name == product.text:
                 return True

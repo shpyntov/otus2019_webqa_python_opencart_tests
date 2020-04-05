@@ -7,5 +7,5 @@ class AdminPage:
     NEW_PRODUCT_MODEL = '#input-model'
     DATA_TAB = '.nav-tabs >li:nth-child(2)'
     SAVE_NEW_PRODUCT = '.pull-right > .btn:nth-child(1)'
-    PRODUCT_ROW_IN_TABLE = 'tbody tr'
-    PRODUCT_NAME_IN_TABLE = PRODUCT_ROW_IN_TABLE + ' td:nth-child(3)'
+    PRODUCT_ROWS_IN_TABLE = 'tbody tr'
+    PRODUCT_NAMES_IN_TABLE = PRODUCT_ROWS_IN_TABLE + ' td:nth-child(3)'
