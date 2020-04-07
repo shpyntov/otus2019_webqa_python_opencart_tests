@@ -1,6 +1,7 @@
 import pytest
 from selenium import webdriver
 import requests
+import paramiko
 
 
 def pytest_addoption(parser):
@@ -58,3 +59,16 @@ def base_url(request):
 @pytest.fixture
 def random_product_name():
     return requests.get('http://names.drycodes.com/1').json()[0]
+
+
+@pytest.fixture
+def ssh_client():
+    host = '192.168.241.130'
+    user = 'root'
+    secret = '1'
+    port = 22
+    client = paramiko.SSHClient()
+    client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
+    client.connect(hostname=host, username=user, password=secret, port=port)
+    yield client
+    client.close()
