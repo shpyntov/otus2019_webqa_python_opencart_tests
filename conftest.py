@@ -7,7 +7,7 @@ import paramiko
 def pytest_addoption(parser):
     parser.addoption('--url', action='store', help='opencart url', default='http://localhost')
     parser.addoption('--browser', action='store', help='browser for tests', choices=['chrome', 'firefox', 'ie'], default='chrome')
-    parser.addoption('--platform', action='store', help='platform for tests', choices=['windows', 'linux'], default='windows')
+    parser.addoption('--platform', action='store', help='platform for tests', choices=['windows', 'linux'], default='linux')
     parser.addoption('--executor', action='store', help='executor for tests', choices=['local', 'grid', 'cloud'], default='local')
     parser.addoption('--wait', action='store', help='wait', default=10)
 
@@ -19,7 +19,7 @@ def browser(request):
     cl_wait = request.config.getoption('--wait')
     if cl_executor == 'grid':
         cl_platform = request.config.getoption('--platform')
-        wd = webdriver.Remote(command_executor='http://192.168.241.1:4444/wd/hub',
+        wd = webdriver.Remote(command_executor='http://localhost:4444/wd/hub',
                               desired_capabilities={'browserName': cl_browser, 'platform': cl_platform})
     elif cl_executor == 'cloud':
         desired_cap = {
