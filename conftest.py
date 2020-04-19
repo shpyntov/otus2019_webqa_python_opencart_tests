@@ -18,7 +18,7 @@ def browser(request):
     cl_wait = request.config.getoption('--wait')
     if cl_executor == 'selenoid':
         wd = webdriver.Remote(command_executor='http://192.168.241.131:4444/wd/hub',
-                              desired_capabilities={'browserName': cl_browser})
+                              desired_capabilities={'browserName': cl_browser, 'enableVnc': True, 'enableVideo': True})
     elif cl_executor == 'cloud':
         desired_cap = {
             'browser': 'Firefox',
