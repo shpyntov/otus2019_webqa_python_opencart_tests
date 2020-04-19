@@ -5,7 +5,7 @@ import paramiko
 
 
 def pytest_addoption(parser):
-    parser.addoption('--url', action='store', help='opencart url', default='http://localhost')
+    parser.addoption('--url', action='store', help='opencart url', default='http://192.168.241.131')
     parser.addoption('--executor', action='store', help='executor for tests', choices=['local', 'cloud', 'selenoid'], default='local')
     parser.addoption('--browser', action='store', help='browser for tests', choices=['chrome', 'firefox', 'ie'], default='chrome')
     parser.addoption('--wait', action='store', help='wait', default=10)
@@ -17,7 +17,7 @@ def browser(request):
     cl_executor = request.config.getoption('--executor')
     cl_wait = request.config.getoption('--wait')
     if cl_executor == 'selenoid':
-        wd = webdriver.Remote(command_executor='http://localhost:4444/wd/hub',
+        wd = webdriver.Remote(command_executor='http://192.168.241.131:4444/wd/hub',
                               desired_capabilities={'browserName': cl_browser})
     elif cl_executor == 'cloud':
         desired_cap = {
