@@ -31,9 +31,9 @@ def test_add_new_product(browser, base_url, random_product_name):
         products = browser.find_elements_by_css_selector(AdminPage.PRODUCT_NAMES_IN_TABLE)
         for product in products:
             if random_product_name == product.text:
-                return True
+                assert True
         if browser.find_elements_by_link_text('>') == []:
-            return False
+            assert False
         else:
             browser.find_element_by_link_text('>').click()
 
@@ -68,9 +68,9 @@ def test_remove_product(browser, base_url):
             products = browser.find_elements_by_css_selector(AdminPage.PRODUCT_NAMES_IN_TABLE)
             for product in products:
                 if removed_product_name == product.text:
-                    return False
+                    assert False
             if browser.find_elements_by_link_text('>') == []:
-                return True
+                assert True
             else:
                 browser.find_element_by_link_text('>').click()
 
@@ -100,8 +100,8 @@ def test_edit_product(browser, base_url, random_product_name):
         products = browser.find_elements_by_css_selector(AdminPage.PRODUCT_NAMES_IN_TABLE)
         for product in products:
             if random_product_name == product.text:
-                return True
+                assert True
         if browser.find_elements_by_link_text('>') == []:
-            return False
+            assert False
         else:
             browser.find_element_by_link_text('>').click()
