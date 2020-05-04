@@ -5,8 +5,8 @@ import paramiko
 
 
 def pytest_addoption(parser):
-    parser.addoption('--url', action='store', help='opencart url', default='http://192.168.241.131')
-    parser.addoption('--executor', action='store', help='executor for tests', choices=['local', 'cloud', 'selenoid'], default='local')
+    parser.addoption('--url', action='store', help='opencart url', default='http://localhost')
+    parser.addoption('--executor', action='store', help='executor for tests', choices=['local', 'selenoid'], default='local')
     parser.addoption('--browser', action='store', help='browser for tests', choices=['chrome', 'firefox', 'ie'], default='chrome')
     parser.addoption('--wait', action='store', help='wait', default=10)
 
@@ -19,19 +19,6 @@ def browser(request):
     if cl_executor == 'selenoid':
         wd = webdriver.Remote(command_executor='http://192.168.241.131:4444/wd/hub',
                               desired_capabilities={'browserName': cl_browser, 'enableVnc': True, 'enableVideo': True})
-    elif cl_executor == 'cloud':
-        desired_cap = {
-            'browser': 'Firefox',
-            'browser_version': '74.0 beta',
-            'os': 'Windows',
-            'os_version': '7',
-            'resolution': '1024x768',
-            'name': 'Demo OpenCart Test'
-        }
-
-        wd = webdriver.Remote(
-            command_executor='https://yurysh1:m4RXgUbtwsbpHSxazUL3@hub-cloud.browserstack.com/wd/hub',
-            desired_capabilities=desired_cap)
     else:
         if cl_browser == 'ie':
             wd = webdriver.Ie()
